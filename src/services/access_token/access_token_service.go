@@ -43,8 +43,6 @@ func (s *service) Create(request access_token.AccessTokenRequest) (*access_token
 		return nil, err
 	}
 
-	//TODO: Support both grant types: client_credentials and password
-
 	// Authenticate the user against the Users API:
 	user, err := s.restUsersRepo.LoginUser(request.Username, request.Password)
 	if err != nil {
