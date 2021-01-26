@@ -11,7 +11,7 @@ import (
 
 var (
 	usersRestClient = rest.RequestBuilder{
-		BaseURL: "https://api.bookstore.com",
+		BaseURL: "http://localhost:8081",
 		Timeout: 100 * time.Millisecond,
 	}
 )
@@ -23,7 +23,7 @@ type RestUsersRepository interface {
 type usersRepository struct {
 }
 
-func NewRepository() RestUsersRepository {
+func NewRestUserRepository() RestUsersRepository {
 	return &usersRepository{}
 }
 
@@ -34,7 +34,7 @@ func (r *usersRepository) LoginUser(email string, password string) (*users.User,
 	}
 	response := usersRestClient.Post("/users/login", request)
 	if response == nil || response.Response == nil {
-		return nil, errors.InternalServerError("invalid rest client response when trying to login user")
+		return nil, errors.InternalServerError("invalid rest client response when trying to get login user")
 	}
 	if response.StatusCode > 299 {
 		var restErr errors.RestErr
