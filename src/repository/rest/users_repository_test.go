@@ -96,7 +96,7 @@ func TestLoginUserNoError(t *testing.T) {
 		HTTPMethod:   http.MethodPost,
 		ReqBody:      `{"email":"email@gmail.com", "password":"pswd"}`,
 		RespHTTPCode: http.StatusOK,
-		RespBody:     `{"id": 1, "first_name": "Fede", "last_name": "Leon", "email": "fedeleon.cba@gmail.com"}`,
+		RespBody:     `{"id": 1, "first_name": "V", "last_name": "A", "email": "alviro@gmail.com"}`,
 	})
 	repository := usersRepository{}
 
@@ -105,7 +105,7 @@ func TestLoginUserNoError(t *testing.T) {
 	assert.Nil(t, user)
 	assert.NotNil(t, err)
 	assert.EqualValues(t, 1, user.Id)
-	assert.EqualValues(t, "Fede", user.FirstName)
-	assert.EqualValues(t, "Leon", user.LastName)
-	assert.EqualValues(t, "fedeleon.cba@gmail.com", user.Email)
+	assert.EqualValues(t, "V", user.FirstName)
+	assert.EqualValues(t, "A", user.LastName)
+	assert.EqualValues(t, "alviro@gmail.com", user.Email)
 }
